@@ -1,0 +1,67 @@
+header.banner {
+  @include BoxShadowHelper(2);
+
+  .nav {
+    float: right;
+    .home & {
+      text-align: center;
+      float: none;
+    }
+
+    >li {
+      display: inline-block;
+
+      a {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        font-size: 1.3em;
+        padding: 0.75em 1em;
+
+        &:after {
+          content: "";
+          display: block;
+          height: 1px;
+          position: relative;
+          bottom: 0;
+          margin: 0 auto;
+          width: 0%;
+          border-top: 2px solid $brand-primary;
+          transition: width $transition-timing $transition-easing;
+        }
+
+        &:focus, &:hover {
+          background: none;
+
+          &:after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.brand {
+  >span {
+    display: block;
+    float: left;
+    background: url(../images/ccpm-logo-h@2x.png) center center no-repeat;
+    background-size: contain;
+    width: 596px * 0.5;
+    height: 240px * 0.5;
+    margin: 10px 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-indent: 200%;
+
+    .home & {
+      background-image: url(../images/ccpm-logo-v@2x.png);
+      width: 337px * 0.5;
+      height: 320px * 0.5;
+      margin: 20px auto;
+      float: none;
+    }
+  }
+}

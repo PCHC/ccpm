@@ -27,6 +27,10 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
+  // Set default featured image size
+  set_post_thumbnail_size( 360, 500 );
+  // Set additional image sizes
+  //add_image_size( 'main-slider', 1440, 750 );
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats

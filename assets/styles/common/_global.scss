@@ -1,1 +1,24 @@
 
+.master-slider-parent {
+  overflow: hidden;
+
+  .ms-slide-info {
+    bottom: 25% !important;
+    right: 5%;
+    left: 50%;
+    width: auto;
+    background: rgba(#FFF,0.85);
+    transform: translateY(50%);
+    @include BoxShadowHelper(2);
+
+    .ms-info {
+      padding: 0.5em;
+      font-size: 2em;
+      color: $brand-primary;
+
+      h3 {
+        color: $brand-secondary;
+      }
+    }
+  }
+}

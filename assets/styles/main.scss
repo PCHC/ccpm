@@ -5,12 +5,12 @@
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@import "components/_shadows";
 @import "common/_global";
 @import "components/_buttons";
 @import "components/_comments";
 @import "components/_forms";
 @import "components/_grid";
-@import "components/_shadows";
 @import "components/_wp-classes";
 @import "layouts/_header";
 @import "layouts/_sidebar";

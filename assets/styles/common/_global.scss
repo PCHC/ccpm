@@ -1,4 +1,21 @@
+.page-header {
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: none;
+}
 
+h1, .h1 {
+  color: $brand-primary;
+  font-size: 2.5em;
+}
+
+h2, .h2 {
+  color: $brand-accent;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+// Master Slider styling
 .master-slider-parent {
   overflow: hidden;
 
@@ -13,7 +30,7 @@
 
     .ms-info {
       padding: 0.5em;
-      font-size: 2em;
+      font-size: 1.27em;
       color: $brand-primary;
 
       h3 {

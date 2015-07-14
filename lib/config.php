@@ -27,6 +27,15 @@ if (!defined('DIST_DIR')) {
   define('DIST_DIR', '/dist/');
 }
 
+if (!defined('GOOGLE_BROWSER_API_KEY')) {
+  // Google Maps API Key
+  define('GOOGLE_BROWSER_API_KEY', 'AIzaSyB8pzJ7H9yq8UyNvLChfrMxXCJsFLOOTNA');
+}
+
+if (!defined('GOOGLE_SERVER_API_KEY')) {
+  define('GOOGLE_SERVER_API_KEY', 'AIzaSyDjoG2gVj5uFc4kYTR7skbxwcCPbkSxIWY');
+}
+
 /**
  * Define which pages shouldn't have the sidebar
  */

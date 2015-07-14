@@ -82,3 +82,13 @@ h2, .h2 {
     }
   }
 }
+
+// Google Maps
+.map-canvas {
+  height: 100%;
+  @include BoxShadowHelper(2);
+}
+
+.front-page-map {
+  height: 650px;
+}

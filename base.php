@@ -31,6 +31,9 @@ use Roots\Sage\Wrapper;
         <?php endif; ?>
       </div><!-- /.content -->
     </div><!-- /.wrap -->
+    <?php if( is_front_page() ){
+      get_template_part('templates/front-page-map');
+    } ?>
     <?php get_template_part('templates/widgets-bottom'); ?>
     <?php
       do_action('get_footer');

@@ -39,3 +39,46 @@ h2, .h2 {
     }
   }
 }
+
+.widgets-bottom {
+
+  .widget {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    @include make-sm-column(4);
+  }
+
+  .widget_sp_image {
+    a {
+      display: block;
+      position: relative;
+      transition: all $transition-timing $transition-easing;
+      @include BoxShadowHelper(2);
+
+      &:hover, &:focus {
+        transform: translate(0,-3px);
+        @include BoxShadowHelper(3);
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0.5em;
+      text-align: right;
+      font-size: 1.4em;
+      font-weight: 100;
+      color: #FFF;
+      background: rgba($brand-primary, 0.8);
+    }
+  }
+}

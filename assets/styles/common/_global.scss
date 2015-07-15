@@ -84,11 +84,12 @@ h2, .h2 {
 }
 
 // Google Maps
-.map-canvas {
+.map-canvas, .acf-map {
   height: 100%;
   @include BoxShadowHelper(2);
 }
 
-.front-page-map {
-  height: 650px;
+.map-row {
+  height: 550px;
+  padding: 0.5em 0;
 }

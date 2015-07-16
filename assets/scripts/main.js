@@ -134,10 +134,25 @@
   	// var
   	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
 
+    var pinColor = $marker.attr('data-pincolor');
+    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor);
+
+    // var MAP_PIN = 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z';
+    var pinIcon = {
+      anchor: new google.maps.Point(6.27,22),
+      path: 'M6.3,22c0.2-3.1,1.9-8.1,4.3-11.2c1.3-1.7,2-3.4,2-4.4C12.6,2.9,9.8,0,6.3,0h0C2.8,0,0,2.9,0,6.4 c0,1,0.6,2.7,2,4.4C4.4,13.9,6.1,18.9,6.3,22L6.3,22z',
+      fillColor: pinColor,
+      fillOpacity: 1,
+      scale: 1.25,
+      strokeColor: LightenDarkenColor(pinColor,-30),
+      strokeWeight: 1.5
+    };
+
   	// create marker
   	var marker = new google.maps.Marker({
   		position	: latlng,
-  		map			: map
+  		map			: map,
+      icon: pinIcon,
   	});
 
   	// add to array
@@ -207,3 +222,33 @@
   $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
+
+function LightenDarkenColor(col, amt) {
+
+  var usePound = false;
+
+  if (col[0] == "#") {
+    col = col.slice(1);
+    usePound = true;
+  }
+
+  var num = parseInt(col,16);
+
+  var r = (num >> 16) + amt;
+
+  if (r > 255) r = 255;
+  else if  (r < 0) r = 0;
+
+  var b = ((num >> 8) & 0x00FF) + amt;
+
+  if (b > 255) b = 255;
+  else if  (b < 0) b = 0;
+
+  var g = (num & 0x0000FF) + amt;
+
+  if (g > 255) g = 255;
+  else if (g < 0) g = 0;
+
+  return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+
+}

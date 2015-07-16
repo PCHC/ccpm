@@ -89,7 +89,18 @@ h2, .h2 {
   @include BoxShadowHelper(2);
 }
 
+.main-map-container {
+  padding: 1em 0;
+}
+
+$map-height: 600px;
+
 .map-row {
-  height: 550px;
-  padding: 0.5em 0;
+  height: $map-height;
+}
+
+.main-map-listing {
+  height: $map-height;
+  overflow-y: scroll;
+  @include BoxShadowHelper(2);
 }

@@ -32,7 +32,7 @@ use Roots\Sage\Wrapper;
       </div><!-- /.content -->
     </div><!-- /.wrap -->
     <?php if( is_front_page() ){
-      get_template_part('templates/front-page-map');
+      get_template_part('templates/members-map');
     } ?>
     <?php get_template_part('templates/widgets-bottom'); ?>
     <?php

@@ -104,3 +104,16 @@ $map-height: 600px;
   overflow-y: scroll;
   @include BoxShadowHelper(2);
 }
+
+.main-map-listing-item {
+  padding: 2px;
+  margin-bottom: 0.5em;
+
+  .well {
+    border: none;
+    border-radius: 0;
+    background: rgba(#FFF,0.7);
+    box-shadow: none;
+    margin: 0;
+  }
+}

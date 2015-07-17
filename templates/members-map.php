@@ -56,35 +56,50 @@ if ( $members->have_posts() ) : ?>
 			// The Loop
 			if ( $memberslist->have_posts() ) : ?>
 				<?php while ( $memberslist->have_posts() ) : $memberslist->the_post(); ?>
-					<?php $pincolor = get_field( 'pincolor' ); ?>
-					<div class="well well-sm" style="background: <?php echo $pincolor; ?>">
-						<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+					<?php $pincolor = get_field( 'pincolor' );
 
-						<?php
-						$memberslocationslistargs = array (
-							'post_type'              => array( 'member' ),
-						  'post_status'            => array( 'publish' ),
-							'pagination'             => false,
-						  'post_parent'            => get_the_ID(),
-							'posts_per_page'         => '-1',
-							'order'                  => 'ASC',
-							'orderby'                => 'title',
-						);
+					// Get subpages
+					$memberslocationslistargs = array (
+						'post_type'              => array( 'member' ),
+						'post_status'            => array( 'publish' ),
+						'pagination'             => false,
+						'post_parent'            => get_the_ID(),
+						'posts_per_page'         => '-1',
+						'order'                  => 'ASC',
+						'orderby'                => 'title',
+					);
 
-						// The Query
-						$member_locations_list = new WP_Query( $memberslocationslistargs );
+					// Subpages Query
+					$member_locations_list = new WP_Query( $memberslocationslistargs ); ?>
 
-						if( $member_locations_list->have_posts() ) :
-							while( $member_locations_list->have_posts() ) : $member_locations_list->the_post(); ?>
-								<div class="row">
-									<div class="col-xs-10 col-xs-offset-2">
-										<?php the_title(); ?>
-									</div>
+					<div class="main-map-listing-item" style="background: <?php echo $pincolor; ?>">
+						<div class="well well-sm">
+							<p>
+								<?php if( $member_locations_list->have_posts() ) : ?>
+									<a class="pull-right" role="button" data-toggle="collapse" href="#collapse-<?php echo get_the_ID(); ?>" aria-expanded="false" aria-controls="collapseExample" aria-label="Expand">
+									  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+									</a>
+								<?php endif; ?>
+								<a href="<?php the_permalink(); ?>"><strong><?php the_title(); ?></strong></a><br>
+								<small class="text-muted"><?php echo get_field('address')['address']; ?></small>
+							</p>
+
+							<?php
+							if( $member_locations_list->have_posts() ) : ?>
+								<div class="collapse" id="collapse-<?php echo get_the_ID(); ?>">
+								<?php while( $member_locations_list->have_posts() ) : $member_locations_list->the_post(); ?>
+										<div class="row">
+											<p class="col-xs-11 col-xs-offset-1">
+												<?php the_title(); ?><br>
+												<small class="text-muted"><?php echo get_field('address')['address']; ?></small>
+											</p>
+										</div>
+								<?php endwhile; ?>
 								</div>
-							<?php endwhile;
-						endif;
-						?>
+							<?php endif;
+							?>
 
+						</div>
 					</div>
 				<?php endwhile; ?>
 			<?php endif; ?>

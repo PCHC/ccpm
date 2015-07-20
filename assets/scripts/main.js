@@ -74,7 +74,7 @@
     }
   };
 
-  function LightenDarkenColor(col, amt) {
+  function lightenDarkenColor(col, amt) {
 
     var usePound = false;
 
@@ -184,7 +184,7 @@
       fillColor: pinColor,
       fillOpacity: 1,
       scale: 1.25,
-      strokeColor: LightenDarkenColor(pinColor,-30),
+      strokeColor: lightenDarkenColor(pinColor,-30),
       strokeWeight: 1.5
     };
 

@@ -14,6 +14,7 @@
               <div class="acf-map">
                 <?php
                 set_query_var( 'marker', $post );
+                set_query_var( 'pincolor', get_field('pincolor') );
                 get_template_part('templates/map-marker'); ?>
 
                 <?php

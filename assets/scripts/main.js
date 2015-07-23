@@ -153,6 +153,8 @@
 
   	// add a markers reference
   	map.markers = [];
+    // add an infowindows reference
+    map.infowindows = [];
 
   	// add markers
   	$markers.each(function(){
@@ -161,6 +163,11 @@
 
   	// center map
   	center_map( map );
+
+    //map.markers
+    google.maps.event.addListener(map, "click", function(event) {
+      close_infowindows( map );
+    });
 
   }
 
@@ -215,9 +222,11 @@
   			content		: $marker.html()
   		});
 
+      map.infowindows.push( infowindow );
+
   		// show info window when marker is clicked
   		google.maps.event.addListener(marker, 'click', function() {
-
+        close_infowindows( map );
   			infowindow.open( map, marker );
 
   		});
@@ -265,6 +274,23 @@
   		map.fitBounds( bounds );
   	}
 
+  }
+
+  /*
+  *  close_infowindows
+  *
+  *  This function will close all the open infowindows
+  *
+  *  @type  function
+  *  @date  7/23/2015
+  *
+  *  @param	map (Google Map object)
+  *  @return  n/a
+  */
+  function close_infowindows( map ) {
+    for( var i = 0; i < map.infowindows.length; i++ ) {
+      map.infowindows[i].close();
+    }
   }
 
   // Load Events

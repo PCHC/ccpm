@@ -31,6 +31,15 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
+        $(window).scroll(function(){
+          var scroll = $(window).scrollTop();
+
+          if(scroll >= 162) {
+            $('body').removeClass('home').addClass('home-scrolled');
+          } else {
+            $('body').removeClass('home-scrolled').addClass('home');
+          }
+        });
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS

@@ -169,7 +169,7 @@
       close_infowindows( map );
     });
 
-    var mcOptions = {gridSize: 20, maxZoom: 9};
+    var mcOptions = {gridSize: 30, maxZoom: 9};
     var markerCluster = new MarkerClusterer(map, map.markers, mcOptions);
 
   }

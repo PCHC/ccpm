@@ -169,6 +169,8 @@
       close_infowindows( map );
     });
 
+    var markerCluster = new MarkerClusterer(map, map.markers);
+
   }
 
   /*

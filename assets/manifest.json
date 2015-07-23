@@ -22,6 +22,9 @@
     },
     "modernizr.js": {
       "bower": ["modernizr"]
+    },
+    "js-marker-clusterer.js": {
+      "bower": ["js-marker-clusterer"]
     }
   },
   "config": {

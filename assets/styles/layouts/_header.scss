@@ -17,8 +17,16 @@ header.banner {
   background: #FFF;
   @include BoxShadowHelper(2);
 
+  .logged-in & {
+    top: 32px;
+  }
+
   .home & {
     position: relative;
+  }
+
+  .home.logged-in & {
+    top: 0;
   }
 
   .nav {

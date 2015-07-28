@@ -6,6 +6,10 @@ body {
   &.home-scrolled {
     margin-top: 255px;
   }
+
+  @media (max-width: $screen-xs-max) {
+    margin-top: 95px !important;
+  }
 }
 
 #wpadminbar {

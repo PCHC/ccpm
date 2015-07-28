@@ -19,6 +19,19 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        $('#mainNavigation').on('show.bs.collapse', function () {
+          // When Main Navigation toggle switch is clicked
+          var $header = $(this).parent().parent();
+          $header.addClass('menu-visible');
+          $header.find('.mainNavigation-toggle').removeClass('glyphicon-menu-hamburger').addClass('glyphicon-remove');
+        });
+
+        $('#mainNavigation').on('hidden.bs.collapse', function () {
+          // When Main Navigation is completely collapsed
+          var $header = $(this).parent().parent();
+          $header.removeClass('menu-visible');
+          $header.find('.mainNavigation-toggle').removeClass('glyphicon-remove').addClass('glyphicon-menu-hamburger');
+        });
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired

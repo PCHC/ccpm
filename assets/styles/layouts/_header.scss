@@ -8,6 +8,18 @@ body {
   }
 }
 
+#wpadminbar {
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+#mainNavigation {
+  @media (min-width: $screen-sm-min) {
+    display: block !important;
+  }
+}
+
 header.banner {
   position: fixed;
   top: 0;
@@ -17,16 +29,33 @@ header.banner {
   background: #FFF;
   @include BoxShadowHelper(2);
 
+  @media (max-width: $screen-xs-max) {
+
+  }
+
   .logged-in & {
     top: 32px;
+    @media (max-width: $screen-xs-max) {
+      top: 0;
+    }
   }
 
   .home & {
     position: relative;
+    @media (max-width: $screen-xs-max) {
+      position: fixed;
+    }
   }
 
   .home.logged-in & {
     top: 0;
+  }
+
+  .mainNavigation-toggle {
+    float: right;
+    cursor: pointer;
+    margin: 1.25em 0.5em;
+    font-size: 1.5em;
   }
 
   .nav {
@@ -68,7 +97,33 @@ header.banner {
       }
     }
   }
-}
+
+  // When the mobile menu is toggled
+  &.menu-visible {
+    display: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(#FFF, 0.9);
+
+    #mainNavigation {
+      clear: both;
+      overflow: scroll;
+
+      .nav {
+        >li {
+          display: block;
+          a {
+            font-size: 1.5em;
+            border-bottom: 1px solid rgba(#000,0.15);
+          }
+        }
+      }
+    }
+  }
+} // header.banner
 
 .brand {
   >span {
@@ -83,6 +138,9 @@ header.banner {
     overflow: hidden;
     white-space: nowrap;
     text-indent: 200%;
+    @media (max-width: $screen-xs-max) {
+
+    }
 
     .home & {
       background-image: url(../images/ccpm-logo-v@2x.png);
@@ -90,6 +148,14 @@ header.banner {
       height: 320px * 0.5;
       margin: 20px auto;
       float: none;
+
+      @media (max-width: $screen-xs-max) {
+        margin: 10px 0;
+        background-image: url(../images/ccpm-logo-h@2x.png);
+        width: 596px * 0.3;
+        height: 240px * 0.3;
+        float: left;
+      }
     }
   }
 }

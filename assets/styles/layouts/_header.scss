@@ -10,6 +10,10 @@ body {
   @media (max-width: $screen-xs-max) {
     margin-top: 95px !important;
   }
+
+  &.noscroll {
+    overflow: hidden;
+  }
 }
 
 #wpadminbar {
@@ -104,7 +108,9 @@ header.banner {
 
   // When the mobile menu is toggled
   &.menu-visible {
-    display: fixed;
+    display: block;
+    position: fixed;
+    overflow-y: scroll;
     top: 0;
     right: 0;
     bottom: 0;
@@ -121,7 +127,7 @@ header.banner {
         >li {
           display: block;
           a {
-            font-size: 1.25em;
+            font-size: 1.5em;
             border-bottom: 1px solid rgba(#000,0.15);
           }
         }

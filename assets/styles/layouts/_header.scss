@@ -106,16 +106,18 @@ header.banner {
     bottom: 0;
     left: 0;
     z-index: 1000;
-    background: rgba(#FFF, 0.9);
+    background: rgba(#FFF, 0.95);
 
     #mainNavigation {
       clear: both;
 
       .nav {
+        float: none;
+        text-align: center;
         >li {
           display: block;
           a {
-            font-size: 1.5em;
+            font-size: 1.25em;
             border-bottom: 1px solid rgba(#000,0.15);
           }
         }

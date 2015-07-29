@@ -40,6 +40,10 @@
         $('.acf-map').each(function(){
       		render_map( $(this) );
       	});
+
+        $('.map-row').each(function(){
+          $(this).css('max-height', $(this).width() * 1.25);
+        });
       }
     },
     // Home page

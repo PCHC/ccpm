@@ -1,7 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
       <?php get_template_part('templates/page', 'header'); ?>
       <div class="row">
-        <div class="col-xs-8 col-sm-9">
+        <div class="col-xs-12 col-sm-9">
           <?php get_template_part('templates/content', 'member'); ?>
 
           <?php
@@ -51,7 +51,7 @@
 
         </div>
 
-        <div class="col-xs-4 col-sm-3">
+        <div class="col-xs-12 col-sm-3">
           <?php
           // Set the ID to the parent's ID or current post ID if top level
           $parent_member = ( wp_get_post_parent_id( get_the_ID() ) == 0 ) ? get_the_ID() : wp_get_post_parent_id( get_the_ID() ); ?>

@@ -17,7 +17,7 @@ $members = new WP_Query( $membersargs );
 if ( $members->have_posts() ) : ?>
 <div class="container main-map-container">
 	<div class="row">
-		<div class="map-row col-xs-6 col-xs-offset-1">
+		<div class="map-row col-xs-10 col-sm-6 col-xs-offset-1">
 			<div class="acf-map">
 			<?php while ( $members->have_posts() ) : $members->the_post();
 				set_query_var( 'pincolor', get_field('pincolor') );
@@ -47,7 +47,7 @@ if ( $members->have_posts() ) : ?>
 			endwhile; ?>
 			</div>
 		</div>
-		<div class="col-xs-4 main-map-listing">
+		<div class="col-xs-10 col-sm-4 col-xs-offset-1 col-sm-offset-0 main-map-listing">
 			<?php
 
 			// The Query

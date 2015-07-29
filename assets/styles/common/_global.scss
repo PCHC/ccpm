@@ -1,3 +1,9 @@
+body {
+  @media (max-width: $screen-xs-max) {
+    font-size: 16px;
+  }
+}
+
 .page-header {
   padding-bottom: 0;
   margin: 0;
@@ -7,12 +13,18 @@
 h1, .h1 {
   color: $brand-primary;
   font-size: 2.4em;
+  @media (max-width: $screen-xs-max) {
+    font-size: 1.8em;
+  }
 }
 
 h2, .h2 {
   color: $brand-accent;
   font-size: 2em;
   font-weight: 600;
+  @media (max-width: $screen-xs-max) {
+    font-size: 1.5em;
+  }
 }
 
 // Master Slider styling
@@ -97,12 +109,21 @@ $map-height: 600px;
 
 .map-row {
   height: $map-height;
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 1em;
+  }
 }
 
 .main-map-listing {
   height: $map-height;
   overflow-y: scroll;
   @include BoxShadowHelper(2);
+
+  @media (max-width: $screen-xs-max) {
+    height: auto;
+    overflow-y: auto;
+    box-shadow: none;
+  }
 }
 
 .main-map-listing-item {

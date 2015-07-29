@@ -21,7 +21,7 @@
         // JavaScript to be fired on all pages
         $('#mainNavigation').on('show.bs.collapse', function () {
           // When Main Navigation toggle switch is clicked
-          var $header = $(this).parent().parent();
+          var $header = $('#mainHeader');
           $header.addClass('menu-visible');
           $('body').addClass('noscroll');
           $header.find('.mainNavigation-toggle').removeClass('glyphicon-menu-hamburger').addClass('glyphicon-remove');
@@ -29,7 +29,7 @@
 
         $('#mainNavigation').on('hidden.bs.collapse', function () {
           // When Main Navigation is completely collapsed
-          var $header = $(this).parent().parent();
+          var $header = $('#mainHeader');
           $header.removeClass('menu-visible');
           $('body').removeClass('noscroll');
           $header.find('.mainNavigation-toggle').removeClass('glyphicon-remove').addClass('glyphicon-menu-hamburger');

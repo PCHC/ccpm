@@ -138,3 +138,35 @@ $map-height: 600px;
     margin: 0;
   }
 }
+
+.leadership {
+  .leader-thumb-link {
+    display: block;
+    position: relative;
+    @include BoxShadowHelper(1);
+    transition: all $transition-timing $transition-easing;
+
+    h2 {
+      font-size: 1.25em;
+      font-weight: 400;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.25em;
+      background: rgba(#FFF, 0.8);
+      color: $link-color;
+      transition: all $transition-timing $transition-easing;
+    }
+
+    &:hover {
+      transform: translate(0,-3px);
+      @include BoxShadowHelper(2);
+      h2 {
+        background: rgba(#FFF, 0.9);
+        color: lighten($link-color, 15%);
+      }
+    }
+  }
+}

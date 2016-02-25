@@ -77,3 +77,29 @@ function widgets_init() {
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+
+/**
+ * Custom querying
+ */
+function pre_get_posts( $query ) {
+  // validate
+	if( is_admin() ){
+		return $query;
+	}
+
+  // Check if query has a post_type
+  if( isset( $query->query_vars['post_type'] ) ) {
+
+    if( $query->query_vars['post_type'] == 'leadership' ) {
+			// Set leadership to show by defined order
+			$query->set('orderby', 'menu_order');
+			$query->set('order', 'ASC');
+			$query->set('posts_per_page', -1);
+			$query->set('nopaging', true);
+		}
+  }
+
+  // Return query
+  return $query;
+}
+add_action('pre_get_posts', __NAMESPACE__ . '\\pre_get_posts');

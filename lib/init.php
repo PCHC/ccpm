@@ -31,6 +31,7 @@ function setup() {
   set_post_thumbnail_size( 360, 500 );
   // Set additional image sizes
   //add_image_size( 'main-slider', 1440, 750 );
+  add_image_size( 'leader-thumb', 165, 200, array('center', 'top') );
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats

@@ -143,30 +143,67 @@ $map-height: 600px;
   .leader-thumb-link {
     display: block;
     position: relative;
-    @include BoxShadowHelper(1);
     transition: all $transition-timing $transition-easing;
+
+    img {
+      display: block;
+      position: relative;
+      min-width: 100%;
+      max-width: 100%;
+      @include BoxShadowHelper(1);
+      transition: all $transition-timing $transition-easing;
+    }
 
     h2 {
       font-size: 1.25em;
       font-weight: 400;
-      margin: 0;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.25em;
-      background: rgba(#FFF, 0.8);
       color: $link-color;
+      margin: 0.5em 0;
       transition: all $transition-timing $transition-easing;
     }
 
+    h4 {
+      margin: 0 0 2em;
+      font-size: 0.9em;
+      font-weight: 400;
+    }
+
     &:hover {
-      transform: translate(0,-3px);
-      @include BoxShadowHelper(2);
+      text-decoration: none;
+
+      img {
+        transform: translate(0,-3px);
+        @include BoxShadowHelper(2);
+      }
+
+      h2, h4 {
+        text-decoration: none;
+      }
+
       h2 {
         background: rgba(#FFF, 0.9);
         color: lighten($link-color, 15%);
       }
+    }
+  }
+}
+
+.leadership-wrap {
+  @media (max-width: $screen-xs-max) {
+    &:nth-child(2n+1) {
+      clear: left;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    &:nth-child(4n+1) {
+      clear: left;
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    &:nth-child(6n+1) {
+      clear: left;
     }
   }
 }

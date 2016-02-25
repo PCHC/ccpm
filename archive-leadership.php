@@ -10,7 +10,7 @@
 <?php else: ?>
   <div class="row">
     <?php while (have_posts()) : the_post(); ?>
-      <div class="col-sm-2">
+      <div class="col-xs-6 col-sm-3 col-md-2 leadership-wrap">
         <?php get_template_part('templates/content', 'leadership'); ?>
       </div>
     <?php endwhile; ?>

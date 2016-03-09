@@ -104,6 +104,33 @@ header.banner {
         }
       }
     }
+
+    .menu-item-has-children {
+      position: relative;
+      > .sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 1em;
+        background: rgba(#FFF,0.9);
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        white-space: nowrap;
+        font-size: 0.9em;
+        @include BoxShadowHelper(1);
+      }
+
+      &:hover {
+        > .sub-menu {
+          display: block;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
   }
 
   // When the mobile menu is toggled
@@ -129,6 +156,24 @@ header.banner {
           a {
             font-size: 1.5em;
             border-bottom: 1px solid rgba(#000,0.15);
+          }
+        }
+
+        .menu-item-has-children {
+          position: relative;
+          > a {
+            border-bottom: none;
+          }
+
+          > .sub-menu {
+            display: block;
+            position: relative;
+            box-shadow: none;
+            background: none;
+            left: auto;
+            font-size: 0.8em;
+            top: -1em;
+            white-space: normal;
           }
         }
       }

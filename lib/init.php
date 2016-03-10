@@ -104,3 +104,30 @@ function pre_get_posts( $query ) {
   return $query;
 }
 add_action('pre_get_posts', __NAMESPACE__ . '\\pre_get_posts');
+
+/**
+ * Theme customization
+ */
+function customize_register( $wp_customize ) {
+  $wp_customize->add_section( 'ccpm_address' , array(
+		'title'      => __( 'Main Address', 'sage' ),
+		'priority'   => 1000,
+	) );
+
+	$wp_customize->add_setting( 'main_address' , array(
+		'default'     => '',
+		'transport'   => 'refresh',
+	) );
+
+	$wp_customize->add_control( new \WP_Customize_Control(
+		$wp_customize,
+		'main_address',
+		array(
+			'label'          => __( 'Main address for footer:', 'sage' ),
+			'section'        => 'ccpm_address',
+			'settings'       => 'main_address',
+			'type'           => 'text',
+		)
+	) );
+}
+add_action('customize_register', __NAMESPACE__ . '\\customize_register');

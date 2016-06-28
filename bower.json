@@ -9,7 +9,7 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "bootstrap-sass-official": "3.3.5",
-    "js-marker-clusterer": "*"
+    "js-marker-clusterer": "git://github.com/googlemaps/js-marker-clusterer.git#6b9afb11a6a2fee365d1727918cc28e7baae0372"
   },
   "overrides": {
     "modernizr": {
@@ -38,7 +38,24 @@
       ]
     },
     "js-marker-clusterer": {
-      "main": "./src/markerclusterer.js"
+      "main": [
+        "./src/markerclusterer.js",
+        "./images/conv30.png",
+        "./images/conv40.png",
+        "./images/conv50.png",
+        "./images/heart30.png",
+        "./images/heart40.png",
+        "./images/heart50.png",
+        "./images/m1.png",
+        "./images/m2.png",
+        "./images/m3.png",
+        "./images/m4.png",
+        "./images/m5.png",
+        "./images/people35.png",
+        "./images/people45.png",
+        "./images/people55.png",
+        "./images/pin.png"
+      ]
     }
   }
 }

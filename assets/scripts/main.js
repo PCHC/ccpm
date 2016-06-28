@@ -11,6 +11,7 @@
  * ======================================================================== */
 
 (function($) {
+  const SITE_URL = $('html').data('siteurl');
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
@@ -188,7 +189,11 @@
       close_infowindows( map );
     });
 
-    var mcOptions = {gridSize: 30, maxZoom: 9};
+    var mcOptions = {
+      gridSize: 30,
+      maxZoom: 9,
+      imagePath: SITE_URL + 'wp-content/themes/ccpm/dist/images/m'
+    };
     var markerCluster = new MarkerClusterer(map, map.markers, mcOptions);
 
   }

@@ -192,7 +192,7 @@
     var mcOptions = {
       gridSize: 30,
       maxZoom: 9,
-      imagePath: SITE_URL + 'wp-content/themes/ccpm/dist/images/m'
+      imagePath: SITE_URL + 'wp-content/themes/ccpmaine/dist/images/m'
     };
     var markerCluster = new MarkerClusterer(map, map.markers, mcOptions);
 

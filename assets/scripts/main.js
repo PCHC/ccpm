@@ -13,6 +13,9 @@
 (function($) {
   const SITE_URL = $('html').data('siteurl');
 
+  // Declare functions
+  var lightenDarkenColor, render_map, add_marker, center_map, close_infowindows;
+
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var Sage = {
@@ -103,44 +106,44 @@
     }
   };
 
-  function lightenDarkenColor(col, amt) {
+  lightenDarkenColor = function(col, amt) {
 
-    var usePound = false;
+   var usePound = false;
 
-    if (col[0] === "#") {
-      col = col.slice(1);
-      usePound = true;
-    }
+   if (col[0] === "#") {
+     col = col.slice(1);
+     usePound = true;
+   }
 
-    var num = parseInt(col,16);
+   var num = parseInt(col,16);
 
-    var r = (num >> 16) + amt;
+   var r = (num >> 16) + amt;
 
-    if (r > 255) {
-      r = 255;
-    } else if (r < 0) {
-      r = 0;
-    }
+   if (r > 255) {
+     r = 255;
+   } else if (r < 0) {
+     r = 0;
+   }
 
-    var b = ((num >> 8) & 0x00FF) + amt;
+   var b = ((num >> 8) & 0x00FF) + amt;
 
-    if (b > 255) {
-      b = 255;
-    } else if (b < 0) {
-      b = 0;
-    }
+   if (b > 255) {
+     b = 255;
+   } else if (b < 0) {
+     b = 0;
+   }
 
-    var g = (num & 0x0000FF) + amt;
+   var g = (num & 0x0000FF) + amt;
 
-    if (g > 255) {
-      g = 255;
-    } else if (g < 0) {
-      g = 0;
-    }
+   if (g > 255) {
+     g = 255;
+   } else if (g < 0) {
+     g = 0;
+   }
 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+   return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
 
-  }
+  };
 
 
   /*
@@ -156,47 +159,47 @@
   *  @return	n/a
   */
 
-  function render_map( $el ) {
+  render_map = function ( $el ) {
 
-  	// var
-  	var $markers = $el.find('.marker');
+   // var
+   var $markers = $el.find('.marker');
 
-  	// vars
-  	var args = {
-  		zoom		: 15,
-  		center		: new google.maps.LatLng(0, 0),
-  		mapTypeId	: google.maps.MapTypeId.ROADMAP
-  	};
+   // vars
+   var args = {
+     zoom		: 15,
+     center		: new google.maps.LatLng(0, 0),
+     mapTypeId	: google.maps.MapTypeId.ROADMAP
+   };
 
-  	// create map
-  	var map = new google.maps.Map( $el[0], args);
+   // create map
+   var map = new google.maps.Map( $el[0], args);
 
-  	// add a markers reference
-  	map.markers = [];
-    // add an infowindows reference
-    map.infowindows = [];
+   // add a markers reference
+   map.markers = [];
+   // add an infowindows reference
+   map.infowindows = [];
 
-  	// add markers
-  	$markers.each(function(){
-    	add_marker( $(this), map );
-  	});
+   // add markers
+   $markers.each(function(){
+     add_marker( $(this), map );
+   });
 
-  	// center map
-  	center_map( map );
+   // center map
+   center_map( map );
 
-    //map.markers
-    google.maps.event.addListener(map, "click", function(event) {
-      close_infowindows( map );
-    });
+   //map.markers
+   google.maps.event.addListener(map, "click", function(event) {
+     close_infowindows( map );
+   });
 
-    var mcOptions = {
-      gridSize: 30,
-      maxZoom: 9,
-      imagePath: SITE_URL + 'wp-content/themes/ccpmaine/dist/images/m'
-    };
-    var markerCluster = new MarkerClusterer(map, map.markers, mcOptions);
+   var mcOptions = {
+     gridSize: 30,
+     maxZoom: 9,
+     imagePath: SITE_URL + 'wp-content/themes/ccpmaine/dist/images/m'
+   };
+   var markerCluster = new MarkerClusterer(map, map.markers, mcOptions);
 
-  }
+  };
 
   /*
   *  add_marker
@@ -212,54 +215,54 @@
   *  @return	n/a
   */
 
-  function add_marker( $marker, map ) {
+  add_marker = function( $marker, map ) {
 
-  	// var
-  	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+   // var
+   var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
 
-    var pinColor = $marker.attr('data-pincolor');
-    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor);
+   var pinColor = $marker.attr('data-pincolor');
+   var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor);
 
-    // var MAP_PIN = 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z';
-    var pinIcon = {
-      anchor: new google.maps.Point(6.27,22),
-      path: 'M6.3,22c0.2-3.1,1.9-8.1,4.3-11.2c1.3-1.7,2-3.4,2-4.4C12.6,2.9,9.8,0,6.3,0h0C2.8,0,0,2.9,0,6.4 c0,1,0.6,2.7,2,4.4C4.4,13.9,6.1,18.9,6.3,22L6.3,22z',
-      fillColor: pinColor,
-      fillOpacity: 1,
-      scale: 1.25,
-      strokeColor: lightenDarkenColor(pinColor,-30),
-      strokeWeight: 1.5
-    };
+   // var MAP_PIN = 'M0-165c-27.618 0-50 21.966-50 49.054C-50-88.849 0 0 0 0s50-88.849 50-115.946C50-143.034 27.605-165 0-165z';
+   var pinIcon = {
+     anchor: new google.maps.Point(6.27,22),
+     path: 'M6.3,22c0.2-3.1,1.9-8.1,4.3-11.2c1.3-1.7,2-3.4,2-4.4C12.6,2.9,9.8,0,6.3,0h0C2.8,0,0,2.9,0,6.4 c0,1,0.6,2.7,2,4.4C4.4,13.9,6.1,18.9,6.3,22L6.3,22z',
+     fillColor: pinColor,
+     fillOpacity: 1,
+     scale: 1.25,
+     strokeColor: lightenDarkenColor(pinColor,-30),
+     strokeWeight: 1.5
+   };
 
-  	// create marker
-  	var marker = new google.maps.Marker({
-  		position	: latlng,
-  		map			: map,
-      icon: pinIcon,
-  	});
+   // create marker
+   var marker = new google.maps.Marker({
+     position	: latlng,
+     map			: map,
+     icon: pinIcon,
+   });
 
-  	// add to array
-  	map.markers.push( marker );
+   // add to array
+   map.markers.push( marker );
 
-  	// if marker contains HTML, add it to an infoWindow
-  	if( $marker.html() )
-  	{
-  		// create info window
-  		var infowindow = new google.maps.InfoWindow({
-  			content		: $marker.html()
-  		});
+   // if marker contains HTML, add it to an infoWindow
+   if( $marker.html() )
+   {
+     // create info window
+     var infowindow = new google.maps.InfoWindow({
+       content		: $marker.html()
+     });
 
-      map.infowindows.push( infowindow );
+     map.infowindows.push( infowindow );
 
-  		// show info window when marker is clicked
-  		google.maps.event.addListener(marker, 'click', function() {
-        close_infowindows( map );
-  			infowindow.open( map, marker );
+     // show info window when marker is clicked
+     google.maps.event.addListener(marker, 'click', function() {
+       close_infowindows( map );
+       infowindow.open( map, marker );
 
-  		});
-  	}
+     });
+   }
 
-  }
+  };
 
   /*
   *  center_map
@@ -274,34 +277,34 @@
   *  @return	n/a
   */
 
-  function center_map( map ) {
+  center_map = function( map ) {
 
-  	// vars
-  	var bounds = new google.maps.LatLngBounds();
+   // vars
+   var bounds = new google.maps.LatLngBounds();
 
-  	// loop through all markers and create bounds
-  	$.each( map.markers, function( i, marker ){
+   // loop through all markers and create bounds
+   $.each( map.markers, function( i, marker ){
 
-  		var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+     var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
 
-  		bounds.extend( latlng );
+     bounds.extend( latlng );
 
-  	});
+   });
 
-  	// only 1 marker?
-  	if( map.markers.length === 1 )
-  	{
-  		// set center of map
-  	    map.setCenter( bounds.getCenter() );
-  	    map.setZoom( 15 );
-  	}
-  	else
-  	{
-  		// fit to bounds
-  		map.fitBounds( bounds );
-  	}
+   // only 1 marker?
+   if( map.markers.length === 1 )
+   {
+     // set center of map
+       map.setCenter( bounds.getCenter() );
+       map.setZoom( 15 );
+   }
+   else
+   {
+     // fit to bounds
+     map.fitBounds( bounds );
+   }
 
-  }
+  };
 
   /*
   *  close_infowindows
@@ -314,11 +317,11 @@
   *  @param	map (Google Map object)
   *  @return  n/a
   */
-  function close_infowindows( map ) {
-    for( var i = 0; i < map.infowindows.length; i++ ) {
-      map.infowindows[i].close();
-    }
-  }
+  close_infowindows = function( map ) {
+   for( var i = 0; i < map.infowindows.length; i++ ) {
+     map.infowindows[i].close();
+   }
+  };
 
   // Load Events
   $(document).ready(UTIL.loadEvents);

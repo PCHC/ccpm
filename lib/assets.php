@@ -74,7 +74,7 @@ function assets() {
   }
 
   wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
-  wp_enqueue_script('google_maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC_bzQmWRwDjeBflq715-Yxk691hpDgABQ', [], null, false);
+  wp_enqueue_script('google_maps', '//maps.googleapis.com/maps/api/js?key=AIzaSyC_bzQmWRwDjeBflq715-Yxk691hpDgABQ', [], null, false);
   wp_enqueue_script('js-marker-clusterer', asset_path('scripts/js-marker-clusterer.js'), [], null, true);
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), ['jquery'], null, true);
 }
